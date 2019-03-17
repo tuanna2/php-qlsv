@@ -1,0 +1,22 @@
+table, td, th {
+    border: 1px solid black;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom:5%;
+    margin-top:5%
+}
+td{
+    text-align: center;
+}
+body{
+    width: 80%;
+    margin:0 auto
+}
+a{
+    text-decoration: none
+}
+.boxAction{
+    color:red
+}
