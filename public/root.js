@@ -21,7 +21,7 @@ function search() {
 function deleteStudent(id) {
     let r = confirm("Có chắc muốn xoá sinh viên này?");
     if (r) {
-        fetch('/php-qlsv/server', {
+        fetch('/php-qlsv/server.php', {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ function addStudent() {
 }
 function fetchData(form, method) {
     return new Promise((resolve, reject) => {
-        fetch('/php-qlsv/server', {
+        fetch('/php-qlsv/server.php', {
             method: method,
             headers: {
                 'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ function checkData(form) {
 function upload(file, form) {
     let formData = new FormData();
     formData.append('photo', file[0]);
-    fetch('/php-qlsv/upload', {
+    fetch('/php-qlsv/upload.php', {
         method: 'POST',
         body: formData
     })
