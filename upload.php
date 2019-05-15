@@ -5,7 +5,7 @@
         if ($_FILES['photo']['error'] > 0){
             $res->status = 0;
             $res->message = "File upload error";
-        }
+        } 
         else{
             move_uploaded_file($_FILES['photo']['tmp_name'], './uploads/'.$_FILES['photo']['name']);
             $anhSV = "/uploads/".$_FILES['photo']['name'];

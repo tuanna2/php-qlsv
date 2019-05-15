@@ -1,13 +1,9 @@
 <?php
     header("Content-Type: application/json");
     include_once("./db/dbconnect.php");
-
     $method = $_SERVER['REQUEST_METHOD'];
-
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
     $res = new stdClass();
-
     if ($contentType === "application/json") {
         $content = trim(file_get_contents("php://input"));
         $decoded = json_decode($content, true);

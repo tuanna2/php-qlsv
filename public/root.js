@@ -1,5 +1,5 @@
 const table = document.getElementById('students');
-getData('http://localhost/php-qlsv/server.php');
+getData('/php-qlsv/api.php');
 
 function getData(url) {
     fetch(url)
@@ -15,13 +15,13 @@ function getData(url) {
         });
 }
 function search() {
-    getData('http://localhost/php-qlsv/server.php?search=' + formSearch.valueSearch.value);
+    getData('/php-qlsv/api.php?search=' + formSearch.valueSearch.value);
     return false;
 }
 function deleteStudent(id) {
     let r = confirm("Có chắc muốn xoá sinh viên này?");
     if (r) {
-        fetch('/php-qlsv/server.php', {
+        fetch('/php-qlsv/api.php', {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ function deleteStudent(id) {
             })
             .then(res => {
                 if (res.status == 1) {
-                    getData('http://localhost/php-qlsv/server.php');
+                    getData('/php-qlsv/api.php');
                 }
                 else {
                     alert('Xoá thất bại');
@@ -49,7 +49,7 @@ function deleteStudent(id) {
     }
 }
 function openEditStudent(id) {
-    fetch('http://localhost/php-qlsv/server.php?id=' + id)
+    fetch('/php-qlsv/api.php?id=' + id)
         .then(response => response.json())
         .then(res => {
             if (res.status == 1) {
@@ -72,7 +72,7 @@ function editStudent() {
             .then(res => {
                 if (res.status == 1) {
                     $('#formEdit').modal('hide');
-                    getData('http://localhost/php-qlsv/server.php');
+                    getData('/php-qlsv/api.php');
                 }
                 else {
                     alert('Sửa thất bại');
@@ -91,7 +91,7 @@ function addStudent() {
             .then(res => {
                 if (res.status == 1) {
                     $('#formAdd').modal('hide');
-                    getData('http://localhost/php-qlsv/server.php');
+                    getData('/php-qlsv/api.php');
                 }
                 else {
                     alert('Thêm thất bại');
@@ -106,7 +106,7 @@ function addStudent() {
 }
 function fetchData(form, method) {
     return new Promise((resolve, reject) => {
-        fetch('/php-qlsv/server.php', {
+        fetch('/php-qlsv/api.php', {
             method: method,
             headers: {
                 'Content-Type': 'application/json'
