@@ -15,41 +15,21 @@
             switch($method){
                 case "POST": 
                     $rs = $conn->query("INSERT INTO `students` (`fullname`,`sex`,`birthday`,`address`,`class`,`photo`) VALUES ('".$decoded['name']."','". $decoded['sex']."','".$decoded['birthday']."','".$decoded['address']."','".$decoded['class']."','".$decoded['photo']."')");
-                    if($rs){
-                        $res->status = 1;
-                        $res ->message = "Success";
-                    }
-                    else {
-                        $res->status = 0;
-                        $res ->message = "Failed data";
-                    }
                     break;
                 case "PUT":
                     $rs = $conn->query("UPDATE `students` SET `fullname` ='".$decoded['name']."',`sex`= '". $decoded['sex']."',`birthday`='".$decoded['birthday']."',`address`='".$decoded['address']."',`class`='".$decoded['class']."',`photo`='".$decoded['photo']."' WHERE id='".$decoded['id']."'");
-                    if($rs){
-                        $res->status = 1;
-                        $res ->message = "Success";
-                    }
-                    else {
-                        $res->status = 0;
-                        $res ->message = "Failed data";
-                    }
                     break;
                 case "DELETE": 
                     $rs = $conn->query("DELETE FROM `students` where id = '".$decoded['id']."'");
-                    if($rs){
-                        $res->status = 1;
-                        $res ->message = "Success";
-                    }
-                    else {
-                        $res->status = 0;
-                        $res ->message = "Failed data";
-                    }
                     break;
-                default:
-                        $res->status = 0;
-                        $res ->message = "Method not accepted";
-                    break;
+            }
+            if($rs){
+                $res->status = 1;
+                $res ->message = "Success";
+            }
+            else {
+                $res->status = 0;
+                $res ->message = "Failed data";
             }
         }
     }
